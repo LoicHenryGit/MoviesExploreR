@@ -1,0 +1,19 @@
+﻿# R
+.Rhistory
+.RData
+.Rproj.user/
+
+# Renv
+renv/library/
+renv/settings/
+
+# Docker
+.docker/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# API Keys
+.env
+.Renviron
