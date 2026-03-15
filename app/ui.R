@@ -131,37 +131,32 @@ ui <- fluidPage(
   
   sidebarLayout(sidebarPanel(width = 4,
                              # Title Search (always visible)
-                             h4("🔍 Title"),
+                             h4("Title"),
                              textInput(inputId = "filter_title_text",
                                        label = "Start typing title here"),
                              selectInput(inputId = "filter_title",
-                                         label = "Choose matching movie(s) here",
+                                         label = "Choose matching movie here",
                                          choices = NULL,
                                          multiple = TRUE),
                              
                              hr(),
                              
                              # People Filters
-                             h4("👥 People"),
-                             textInput("director_search", "Director:"),
-                             textInput("cinematographer_search", "Cinematographer:"),
-                             textInput("composer_search", "Composer:"),
-                             
-                             hr(),
-                             
-                             # Release & Ratings
-                             h4("📅 Release & Ratings"),
-                             numericInput("min_rating", "Min Rating:", min = 0, max = 10, value = 6),
-                             dateRangeInput("release_dates", "Release Period:", start = NULL, end = NULL),
-                             
-                             hr(),
-                             
-                             actionButton("search_btn", "🔍 Search", class = "btn-primary")
+                             h4("Director"),
+                             textInput(inputId = "filter_director_text",
+                                       label = "Start typing name here"),
+                             selectInput(inputId = "filter_director",
+                                         label = "Choose matching director here",
+                                         choices = NULL,
+                                         multiple = TRUE),
   ),
   
   mainPanel(width = 8,
-            verbatimTextOutput("debug"),
-            uiOutput("results")
+            column(12, align = "center",
+                   actionButton("search_button", "Find Movies")),
+            column(12, align = "center",
+                   dataTableOutput("search_result"))
+            
   )
   )
 )
